@@ -9,7 +9,7 @@ import updateNodeCoordinates from './updateNodeCoordinates';
  */
 const NodesCanvas = (props) => {
   const {
-    nodes, onPortRegister, onNodeRegister, onNodeRemove, onDragNewSegment, onSegmentFail, onSegmentConnect, onChange,
+    onEvent, nodes, onPortRegister, onNodeRegister, onNodeRemove, onDragNewSegment, onSegmentFail, onSegmentConnect, onChange,
   } = props;
 
   // when a node item update its position updates it within the nodes array
@@ -31,6 +31,7 @@ const NodesCanvas = (props) => {
       onSegmentFail={onSegmentFail}
       onSegmentConnect={onSegmentConnect}
       onMount={onNodeRegister}
+      onEvent={onEvent}
       key={node.id}
     />
   ));
@@ -39,6 +40,7 @@ const NodesCanvas = (props) => {
 NodesCanvas.propTypes = {
   nodes: PropTypes.arrayOf(NodeType),
   onChange: PropTypes.func,
+  onEvent: PropTypes.func,
   onNodeRegister: PropTypes.func,
   onPortRegister: PropTypes.func,
   onNodeRemove: PropTypes.func,
@@ -50,6 +52,7 @@ NodesCanvas.propTypes = {
 NodesCanvas.defaultProps = {
   nodes: [],
   onChange: undefined,
+  onEvent: undefined,
   onNodeRegister: undefined,
   onPortRegister: undefined,
   onNodeRemove: undefined,
