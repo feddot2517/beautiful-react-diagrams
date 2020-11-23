@@ -23,7 +23,8 @@ var DiagramCanvas = function DiagramCanvas(props) {
       zoomOnWheel = props.zoomOnWheel,
       className = props.className,
       style = props.style,
-      rest = _objectWithoutProperties(props, ["children", "portRefs", "nodeRefs", "draggable", "delta", "zoomButtonsPosition", "showZoomButtons", "maxZoom", "minZoom", "zoomOnWheel", "className", "style"]);
+      onClick = props.onClick,
+      rest = _objectWithoutProperties(props, ["children", "portRefs", "nodeRefs", "draggable", "delta", "zoomButtonsPosition", "showZoomButtons", "maxZoom", "minZoom", "zoomOnWheel", "className", "style", "onClick"]);
 
   var _useState = useState(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -176,6 +177,7 @@ var DiagramCanvas = function DiagramCanvas(props) {
     disableZoomInBtn: canvasScale >= maxZoom,
     buttonsPosition: zoomButtonsPosition
   }), React.createElement("div", _extends({
+    onClick: onClick,
     className: classList,
     ref: canvasRef,
     style: getDiagramStyle(),
@@ -200,7 +202,8 @@ DiagramCanvas.propTypes = {
   zoomButtonsPosition: PropTypes.oneOf(['top-left', 'top-right', 'top-center', 'bottom-right', 'bottom-center', 'bottom-left']),
   className: PropTypes.string,
   minZoom: PropTypes.number,
-  maxZoom: PropTypes.number
+  maxZoom: PropTypes.number,
+  onClick: PropTypes.func
 };
 DiagramCanvas.defaultProps = {
   portRefs: {},
@@ -212,7 +215,8 @@ DiagramCanvas.defaultProps = {
   zoomOnWheel: false,
   zoomButtonsPosition: 'bottom-right',
   minZoom: 1,
-  maxZoom: 100
+  maxZoom: 100,
+  onClick: undefined
 };
 var DiagramCanvas$1 = React.memo(DiagramCanvas);
 

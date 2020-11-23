@@ -34,7 +34,8 @@ var DiagramCanvas = function DiagramCanvas(props) {
       zoomOnWheel = props.zoomOnWheel,
       className = props.className,
       style = props.style,
-      rest = _rollupPluginBabelHelpers.objectWithoutProperties(props, ["children", "portRefs", "nodeRefs", "draggable", "delta", "zoomButtonsPosition", "showZoomButtons", "maxZoom", "minZoom", "zoomOnWheel", "className", "style"]);
+      onClick = props.onClick,
+      rest = _rollupPluginBabelHelpers.objectWithoutProperties(props, ["children", "portRefs", "nodeRefs", "draggable", "delta", "zoomButtonsPosition", "showZoomButtons", "maxZoom", "minZoom", "zoomOnWheel", "className", "style", "onClick"]);
 
   var _useState = React.useState(null),
       _useState2 = _rollupPluginBabelHelpers.slicedToArray(_useState, 2),
@@ -187,6 +188,7 @@ var DiagramCanvas = function DiagramCanvas(props) {
     disableZoomInBtn: canvasScale >= maxZoom,
     buttonsPosition: zoomButtonsPosition
   }), React__default['default'].createElement("div", _rollupPluginBabelHelpers['extends']({
+    onClick: onClick,
     className: classList,
     ref: canvasRef,
     style: getDiagramStyle(),
@@ -211,7 +213,8 @@ DiagramCanvas.propTypes = {
   zoomButtonsPosition: PropTypes__default['default'].oneOf(['top-left', 'top-right', 'top-center', 'bottom-right', 'bottom-center', 'bottom-left']),
   className: PropTypes__default['default'].string,
   minZoom: PropTypes__default['default'].number,
-  maxZoom: PropTypes__default['default'].number
+  maxZoom: PropTypes__default['default'].number,
+  onClick: PropTypes__default['default'].func
 };
 DiagramCanvas.defaultProps = {
   portRefs: {},
@@ -223,7 +226,8 @@ DiagramCanvas.defaultProps = {
   zoomOnWheel: false,
   zoomButtonsPosition: 'bottom-right',
   minZoom: 1,
-  maxZoom: 100
+  maxZoom: 100,
+  onClick: undefined
 };
 var DiagramCanvas$1 = React__default['default'].memo(DiagramCanvas);
 

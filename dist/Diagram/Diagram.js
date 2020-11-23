@@ -96,7 +96,14 @@ var Diagram = function Diagram(props) {
   return React__default['default'].createElement(DiagramCanvas['default'], _rollupPluginBabelHelpers['extends']({
     portRefs: portRefs,
     nodeRefs: nodeRefs
-  }, rest), React__default['default'].createElement(NodesCanvas['default'], {
+  }, rest, {
+    onClick: function onClick(e) {
+      return onEvent({
+        type: 'unselectNode',
+        value: e
+      });
+    }
+  }), React__default['default'].createElement(NodesCanvas['default'], {
     nodes: schema.nodes,
     onChange: onNodesChange,
     onNodeRegister: onNodeRegister,

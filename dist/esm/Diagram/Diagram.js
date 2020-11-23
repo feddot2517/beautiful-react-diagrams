@@ -87,7 +87,14 @@ var Diagram = function Diagram(props) {
   return React.createElement(DiagramCanvas, _extends({
     portRefs: portRefs,
     nodeRefs: nodeRefs
-  }, rest), React.createElement(NodesCanvas, {
+  }, rest, {
+    onClick: function onClick(e) {
+      return onEvent({
+        type: 'unselectNode',
+        value: e
+      });
+    }
+  }), React.createElement(NodesCanvas, {
     nodes: schema.nodes,
     onChange: onNodesChange,
     onNodeRegister: onNodeRegister,

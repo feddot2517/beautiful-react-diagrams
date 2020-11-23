@@ -101,7 +101,12 @@ var DiagramNode = function DiagramNode(props) {
     className: classList,
     ref: ref,
     style: getDiagramNodeStyle['default'](coordinates, disableDrag),
-    onClick: onEvent
+    onClick: function onClick(e) {
+      return onEvent({
+        event: 'selectNode',
+        value: e
+      });
+    }
   }, render && typeof render === 'function' && render(customRenderProps), !render && React__default['default'].createElement(React__default['default'].Fragment, null, content, React__default['default'].createElement("div", {
     className: "bi-port-wrapper"
   }, React__default['default'].createElement("div", {
