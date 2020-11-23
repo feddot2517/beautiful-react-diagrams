@@ -16,7 +16,7 @@ import DiagramZoomButtons from '../DiagramZoomButtons/DiagramZoomButtons';
 const DiagramCanvas = (props) => {
   const {
     children, portRefs, nodeRefs, draggable, delta, zoomButtonsPosition, showZoomButtons,
-    maxZoom, minZoom, zoomOnWheel, className, style, ...rest
+    maxZoom, minZoom, zoomOnWheel, className, style, onClick, ...rest
   } = props;
   const [bbox, setBoundingBox] = useState(null);
   const canvasRef = useRef();
@@ -155,6 +155,7 @@ const DiagramCanvas = (props) => {
         />
       )}
       <div
+        onClick={onClick}
         className={classList}
         ref={canvasRef}
         style={getDiagramStyle()}
@@ -193,6 +194,7 @@ DiagramCanvas.propTypes = {
   className: PropTypes.string,
   minZoom: PropTypes.number,
   maxZoom: PropTypes.number,
+  onClick: PropTypes.func
 };
 
 DiagramCanvas.defaultProps = {
@@ -206,6 +208,7 @@ DiagramCanvas.defaultProps = {
   zoomButtonsPosition: 'bottom-right',
   minZoom: 1,
   maxZoom: 100,
+  onClick: undefined,
 };
 
 export default React.memo(DiagramCanvas);

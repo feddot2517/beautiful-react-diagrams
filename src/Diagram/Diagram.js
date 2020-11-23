@@ -71,7 +71,7 @@ const Diagram = (props) => {
   };
 
   return (
-    <DiagramCanvas portRefs={portRefs} nodeRefs={nodeRefs} {...rest}>
+    <DiagramCanvas portRefs={portRefs} nodeRefs={nodeRefs} {...rest} onClick={(e)=>onEvent({type: 'unselectNode', value: e})}>
       <NodesCanvas
         nodes={schema.nodes}
         onChange={onNodesChange}

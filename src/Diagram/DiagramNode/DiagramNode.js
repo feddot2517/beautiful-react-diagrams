@@ -64,7 +64,7 @@ const DiagramNode = (props) => {
   const customRenderProps = { id, render, content, type, inputs: InputPorts, outputs: OutputPorts, data, className };
 
   return (
-    <div className={classList} ref={ref} style={getDiagramNodeStyle(coordinates, disableDrag)} onClick={onEvent}>
+    <div className={classList} ref={ref} style={getDiagramNodeStyle(coordinates, disableDrag)} onClick={(e)=>onEvent({event: 'selectNode', value: e})}>
       {render && typeof render === 'function' && render(customRenderProps)}
       {!render && (
         <>
