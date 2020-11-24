@@ -7,7 +7,7 @@ import DiagramNode from '../DiagramNode/DiagramNode.js';
 import updateNodeCoordinates from './updateNodeCoordinates.js';
 
 var NodesCanvas = function NodesCanvas(props) {
-  var onEvent = props.onEvent,
+  var onSelectNode = props.onSelectNode,
       nodes = props.nodes,
       onPortRegister = props.onPortRegister,
       onNodeRegister = props.onNodeRegister,
@@ -37,7 +37,7 @@ var NodesCanvas = function NodesCanvas(props) {
       onSegmentFail: onSegmentFail,
       onSegmentConnect: onSegmentConnect,
       onMount: onNodeRegister,
-      onEvent: onEvent,
+      onSelectNode: onSelectNode,
       key: node.id
     }));
   });
@@ -46,7 +46,7 @@ var NodesCanvas = function NodesCanvas(props) {
 NodesCanvas.propTypes = {
   nodes: PropTypes.arrayOf(NodeType),
   onChange: PropTypes.func,
-  onEvent: PropTypes.func,
+  onSelectNode: PropTypes.func,
   onNodeRegister: PropTypes.func,
   onPortRegister: PropTypes.func,
   onNodeRemove: PropTypes.func,
@@ -57,7 +57,7 @@ NodesCanvas.propTypes = {
 NodesCanvas.defaultProps = {
   nodes: [],
   onChange: undefined,
-  onEvent: undefined,
+  onSelectNode: undefined,
   onNodeRegister: undefined,
   onPortRegister: undefined,
   onNodeRemove: undefined,

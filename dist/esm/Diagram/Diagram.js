@@ -10,8 +10,8 @@ import LinksCanvas from './LinksCanvas/LinksCanvas.js';
 var Diagram = function Diagram(props) {
   var schema = props.schema,
       onChange = props.onChange,
-      onEvent = props.onEvent,
-      rest = _objectWithoutProperties(props, ["schema", "onChange", "onEvent"]);
+      onSelectNode = props.onSelectNode,
+      rest = _objectWithoutProperties(props, ["schema", "onChange", "onSelectNode"]);
 
   var _useState = useState(),
       _useState2 = _slicedToArray(_useState, 2),
@@ -87,14 +87,7 @@ var Diagram = function Diagram(props) {
   return React.createElement(DiagramCanvas, _extends({
     portRefs: portRefs,
     nodeRefs: nodeRefs
-  }, rest, {
-    onClick: function onClick(e) {
-      return onEvent({
-        type: 'unselectNode',
-        value: e
-      });
-    }
-  }), React.createElement(NodesCanvas, {
+  }, rest), React.createElement(NodesCanvas, {
     nodes: schema.nodes,
     onChange: onNodesChange,
     onNodeRegister: onNodeRegister,
@@ -102,7 +95,7 @@ var Diagram = function Diagram(props) {
     onNodeRemove: onNodeRemove,
     onDragNewSegment: onDragNewSegment,
     onSegmentFail: onSegmentFail,
-    onEvent: onEvent,
+    onSelectNode: onSelectNode,
     onSegmentConnect: onSegmentConnect
   }), React.createElement(LinksCanvas, {
     nodes: schema.nodes,
@@ -115,7 +108,7 @@ var Diagram = function Diagram(props) {
 Diagram.propTypes = {
   schema: SchemaType,
   onChange: PropTypes.func,
-  onEvent: PropTypes.func
+  onSelectNode: PropTypes.func
 };
 Diagram.defaultProps = {
   schema: {
@@ -123,7 +116,7 @@ Diagram.defaultProps = {
     links: []
   },
   onChange: undefined,
-  onEvent: undefined
+  onSelectNode: undefined
 };
 var Diagram$1 = React.memo(Diagram);
 
