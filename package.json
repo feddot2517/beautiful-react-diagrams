@@ -6,7 +6,7 @@
   "module": "esm/index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "build": "npx del-cli dist && rollup -c",
+    "build": "npx del-cli dist && rollup -c && mv ./icons ./dist",
     "build-doc": "npx styleguidist build --config docs/setup/styleguidist.config.js",
     "start": "styleguidist server --config docs/setup/styleguidist.config.js",
     "lint-js": "eslint --ext .jsx,.js src/",

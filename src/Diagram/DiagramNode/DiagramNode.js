@@ -17,7 +17,7 @@ import useNodeUnregistration from '../../shared/internal_hooks/useNodeUnregistra
 const DiagramNode = (props) => {
   const {
     id, content, coordinates, type, inputs, outputs, data, onPositionChange, onPortRegister, onNodeRemove,
-    onDragNewSegment, onMount, onSegmentFail, onSegmentConnect, render, className, disableDrag, onEvent
+    onDragNewSegment, onMount, onSegmentFail, onSegmentConnect, render, className, disableDrag, onSelectNode
   } = props;
   const registerPort = usePortRegistration(inputs, outputs, onPortRegister); // get the port registration method
   const { ref, onDragStart, onDrag } = useDrag({ throttleBy: 14 }); // get the drag n drop methods
@@ -64,7 +64,7 @@ const DiagramNode = (props) => {
   const customRenderProps = { id, render, content, type, inputs: InputPorts, outputs: OutputPorts, data, className };
 
   return (
-    <div className={classList} ref={ref} style={getDiagramNodeStyle(coordinates, disableDrag)} onClick={(e)=>onEvent({event: 'selectNode', value: e})}>
+    <div className={classList} ref={ref} style={getDiagramNodeStyle(coordinates, disableDrag)} onClick={(e)=>onSelectNode({id, content, coordinates, event: e})}>
       {render && typeof render === 'function' && render(customRenderProps)}
       {!render && (
         <>
@@ -147,7 +147,7 @@ DiagramNode.propTypes = {
   /**
    * The possible className
    */
-  onEvent: PropTypes.func,
+  onSelectNode: PropTypes.func,
   className: PropTypes.string,
   disableDrag: PropTypes.bool,
 };
@@ -163,7 +163,7 @@ DiagramNode.defaultProps = {
   onMount: undefined,
   onPortRegister: undefined,
   onNodeRemove: undefined,
-  onEvent: undefined,
+  onSelectNode: undefined,
   onDragNewSegment: undefined,
   onSegmentFail: undefined,
   onSegmentConnect: undefined,

@@ -40,7 +40,7 @@ var DiagramNode = function DiagramNode(props) {
       render = props.render,
       className = props.className,
       disableDrag = props.disableDrag,
-      onEvent = props.onEvent;
+      onSelectNode = props.onSelectNode;
   var registerPort = useContextRegistration.usePortRegistration(inputs, outputs, onPortRegister);
 
   var _useDrag = useDrag['default']({
@@ -102,9 +102,11 @@ var DiagramNode = function DiagramNode(props) {
     ref: ref,
     style: getDiagramNodeStyle['default'](coordinates, disableDrag),
     onClick: function onClick(e) {
-      return onEvent({
-        event: 'selectNode',
-        value: e
+      return onSelectNode({
+        id: id,
+        content: content,
+        coordinates: coordinates,
+        event: e
       });
     }
   }, render && typeof render === 'function' && render(customRenderProps), !render && React__default['default'].createElement(React__default['default'].Fragment, null, content, React__default['default'].createElement("div", {
@@ -132,7 +134,7 @@ DiagramNode.propTypes = {
   onDragNewSegment: PropTypes__default['default'].func,
   onSegmentFail: PropTypes__default['default'].func,
   onSegmentConnect: PropTypes__default['default'].func,
-  onEvent: PropTypes__default['default'].func,
+  onSelectNode: PropTypes__default['default'].func,
   className: PropTypes__default['default'].string,
   disableDrag: PropTypes__default['default'].bool
 };
@@ -147,7 +149,7 @@ DiagramNode.defaultProps = {
   onMount: undefined,
   onPortRegister: undefined,
   onNodeRemove: undefined,
-  onEvent: undefined,
+  onSelectNode: undefined,
   onDragNewSegment: undefined,
   onSegmentFail: undefined,
   onSegmentConnect: undefined,

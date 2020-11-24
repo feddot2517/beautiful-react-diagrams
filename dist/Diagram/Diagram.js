@@ -19,8 +19,8 @@ var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
 var Diagram = function Diagram(props) {
   var schema = props.schema,
       onChange = props.onChange,
-      onEvent = props.onEvent,
-      rest = _rollupPluginBabelHelpers.objectWithoutProperties(props, ["schema", "onChange", "onEvent"]);
+      onSelectNode = props.onSelectNode,
+      rest = _rollupPluginBabelHelpers.objectWithoutProperties(props, ["schema", "onChange", "onSelectNode"]);
 
   var _useState = React.useState(),
       _useState2 = _rollupPluginBabelHelpers.slicedToArray(_useState, 2),
@@ -96,14 +96,7 @@ var Diagram = function Diagram(props) {
   return React__default['default'].createElement(DiagramCanvas['default'], _rollupPluginBabelHelpers['extends']({
     portRefs: portRefs,
     nodeRefs: nodeRefs
-  }, rest, {
-    onClick: function onClick(e) {
-      return onEvent({
-        type: 'unselectNode',
-        value: e
-      });
-    }
-  }), React__default['default'].createElement(NodesCanvas['default'], {
+  }, rest), React__default['default'].createElement(NodesCanvas['default'], {
     nodes: schema.nodes,
     onChange: onNodesChange,
     onNodeRegister: onNodeRegister,
@@ -111,7 +104,7 @@ var Diagram = function Diagram(props) {
     onNodeRemove: onNodeRemove,
     onDragNewSegment: onDragNewSegment,
     onSegmentFail: onSegmentFail,
-    onEvent: onEvent,
+    onSelectNode: onSelectNode,
     onSegmentConnect: onSegmentConnect
   }), React__default['default'].createElement(LinksCanvas['default'], {
     nodes: schema.nodes,
@@ -124,7 +117,7 @@ var Diagram = function Diagram(props) {
 Diagram.propTypes = {
   schema: Types.SchemaType,
   onChange: PropTypes__default['default'].func,
-  onEvent: PropTypes__default['default'].func
+  onSelectNode: PropTypes__default['default'].func
 };
 Diagram.defaultProps = {
   schema: {
@@ -132,7 +125,7 @@ Diagram.defaultProps = {
     links: []
   },
   onChange: undefined,
-  onEvent: undefined
+  onSelectNode: undefined
 };
 var Diagram$1 = React__default['default'].memo(Diagram);
 

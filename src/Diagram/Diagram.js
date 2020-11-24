@@ -14,7 +14,7 @@ import './diagram.scss';
  * with the user.
  */
 const Diagram = (props) => {
-  const { schema, onChange, onEvent, ...rest } = props;
+  const { schema, onChange, onSelectNode, ...rest } = props;
   const [segment, setSegment] = useState();
   const { current: portRefs } = useRef({}); // keeps the port elements references
   const { current: nodeRefs } = useRef({}); // keeps the node elements references
@@ -71,7 +71,7 @@ const Diagram = (props) => {
   };
 
   return (
-    <DiagramCanvas portRefs={portRefs} nodeRefs={nodeRefs} {...rest} onClick={(e)=>onEvent({type: 'unselectNode', value: e})}>
+    <DiagramCanvas portRefs={portRefs} nodeRefs={nodeRefs} {...rest}>
       <NodesCanvas
         nodes={schema.nodes}
         onChange={onNodesChange}
@@ -80,7 +80,7 @@ const Diagram = (props) => {
         onNodeRemove={onNodeRemove}
         onDragNewSegment={onDragNewSegment}
         onSegmentFail={onSegmentFail}
-        onEvent={onEvent}
+        onSelectNode={onSelectNode}
         onSegmentConnect={onSegmentConnect}
       />
       <LinksCanvas nodes={schema.nodes} links={schema.links} segment={segment} onChange={onLinkDelete} />
@@ -97,13 +97,13 @@ Diagram.propTypes = {
    * The callback to be performed every time the model changes
    */
   onChange: PropTypes.func,
-  onEvent: PropTypes.func
+  onSelectNode: PropTypes.func
 };
 
 Diagram.defaultProps = {
   schema: { nodes: [], links: [] },
   onChange: undefined,
-  onEvent: undefined
+  onSelectNode: undefined
 };
 
 export default React.memo(Diagram);
