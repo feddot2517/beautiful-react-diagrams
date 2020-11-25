@@ -8,7 +8,7 @@ var _rollupPluginBabelHelpers = require('../../_virtual/_rollupPluginBabelHelper
 var PropTypes = require('prop-types');
 var classNames = require('classnames');
 var Types = require('../../shared/Types.js');
-var inRange = require('lodash.inrange');
+require('lodash.inrange');
 var getDiagramNodeStyle = require('./getDiagramNodeStyle.js');
 var useContextRegistration = require('../../shared/internal_hooks/useContextRegistration.js');
 var useDrag = require('../../shared/internal_hooks/useDrag.js');
@@ -20,7 +20,6 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
 var classNames__default = /*#__PURE__*/_interopDefaultLegacy(classNames);
-var inRange__default = /*#__PURE__*/_interopDefaultLegacy(inRange);
 
 var DiagramNode = function DiagramNode(props) {
   var id = props.id,
@@ -40,7 +39,8 @@ var DiagramNode = function DiagramNode(props) {
       render = props.render,
       className = props.className,
       disableDrag = props.disableDrag,
-      onSelectNode = props.onSelectNode;
+      onSelectNode = props.onSelectNode,
+      isSelected = props.isSelected;
   var registerPort = useContextRegistration.usePortRegistration(inputs, outputs, onPortRegister);
 
   var _useDrag = useDrag['default']({
@@ -61,15 +61,8 @@ var DiagramNode = function DiagramNode(props) {
       if (onPositionChange) {
         event.stopImmediatePropagation();
         event.stopPropagation();
-        var nextWidth = dragStartPoint.current[0] - info.offset[0];
-        var nextHeight = dragStartPoint.current[1] - info.offset[1];
-        var parentDim = [ref.current.parentElement.offsetWidth, ref.current.parentElement.offsetHeight];
-        var refDim = [ref.current.offsetWidth, ref.current.offsetHeight];
-
-        if (inRange__default['default'](nextWidth, 0, parentDim[0] - refDim[0]) && inRange__default['default'](nextHeight, 0, parentDim[1] - refDim[1])) {
-          var nextCoords = [nextWidth, nextHeight];
-          onPositionChange(id, nextCoords);
-        }
+        var nextCoords = [dragStartPoint.current[0] - info.offset[0], dragStartPoint.current[1] - info.offset[1]];
+        onPositionChange(id, nextCoords);
       }
     });
   }
@@ -99,8 +92,7 @@ var DiagramNode = function DiagramNode(props) {
   };
   return React__default['default'].createElement("div", {
     className: classList,
-    ref: ref,
-    style: getDiagramNodeStyle['default'](coordinates, disableDrag),
+    style: getDiagramNodeStyle['default'](coordinates),
     onClick: function onClick(e) {
       return onSelectNode({
         id: id,
@@ -109,13 +101,20 @@ var DiagramNode = function DiagramNode(props) {
         event: e
       });
     }
-  }, render && typeof render === 'function' && render(customRenderProps), !render && React__default['default'].createElement(React__default['default'].Fragment, null, content, React__default['default'].createElement("div", {
+  }, React__default['default'].createElement("span", {
+    style: {
+      background: isSelected ? '#5b8492' : '#182b3e',
+      cursors: 'move',
+      userSelect: 'none'
+    },
+    ref: ref
+  }, "DRAG HERE"), React__default['default'].createElement("div", null, render && typeof render === 'function' && render(customRenderProps), !render && React__default['default'].createElement(React__default['default'].Fragment, null, content, React__default['default'].createElement("div", {
     className: "bi-port-wrapper"
   }, React__default['default'].createElement("div", {
     className: "bi-input-ports"
   }, InputPorts), React__default['default'].createElement("div", {
     className: "bi-output-ports"
-  }, OutputPorts))));
+  }, OutputPorts)))));
 };
 
 DiagramNode.propTypes = {
@@ -136,7 +135,8 @@ DiagramNode.propTypes = {
   onSegmentConnect: PropTypes__default['default'].func,
   onSelectNode: PropTypes__default['default'].func,
   className: PropTypes__default['default'].string,
-  disableDrag: PropTypes__default['default'].bool
+  disableDrag: PropTypes__default['default'].bool,
+  isSelected: PropTypes__default['default'].bool
 };
 DiagramNode.defaultProps = {
   type: 'default',
@@ -154,8 +154,8 @@ DiagramNode.defaultProps = {
   onSegmentFail: undefined,
   onSegmentConnect: undefined,
   className: '',
-  disableDrag: false
+  disableDrag: false,
+  isSelected: false
 };
-var DiagramNode$1 = React__default['default'].memo(DiagramNode);
 
-exports.default = DiagramNode$1;
+exports.default = DiagramNode;

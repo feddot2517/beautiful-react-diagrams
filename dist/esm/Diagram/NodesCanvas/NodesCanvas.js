@@ -1,13 +1,13 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import React from 'react';
-import { objectWithoutProperties as _objectWithoutProperties, extends as _extends } from '../../_virtual/_rollupPluginBabelHelpers.js';
+import React, { useState } from 'react';
+import { slicedToArray as _slicedToArray, objectWithoutProperties as _objectWithoutProperties, extends as _extends } from '../../_virtual/_rollupPluginBabelHelpers.js';
 import PropTypes from 'prop-types';
 import { NodeType } from '../../shared/Types.js';
 import DiagramNode from '../DiagramNode/DiagramNode.js';
 import updateNodeCoordinates from './updateNodeCoordinates.js';
 
 var NodesCanvas = function NodesCanvas(props) {
-  var onSelectNode = props.onSelectNode,
+  var _onSelectNode = props.onSelectNode,
       nodes = props.nodes,
       onPortRegister = props.onPortRegister,
       onNodeRegister = props.onNodeRegister,
@@ -16,6 +16,11 @@ var NodesCanvas = function NodesCanvas(props) {
       onSegmentFail = props.onSegmentFail,
       onSegmentConnect = props.onSegmentConnect,
       onChange = props.onChange;
+
+  var _useState = useState(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      selectedNode = _useState2[0],
+      setSelectedNode = _useState2[1];
 
   var onNodePositionChange = function onNodePositionChange(nodeId, newCoordinates) {
     if (onChange) {
@@ -37,7 +42,12 @@ var NodesCanvas = function NodesCanvas(props) {
       onSegmentFail: onSegmentFail,
       onSegmentConnect: onSegmentConnect,
       onMount: onNodeRegister,
-      onSelectNode: onSelectNode,
+      isSelected: selectedNode === node.id,
+      onSelectNode: function onSelectNode(e) {
+        _onSelectNode(e);
+
+        setSelectedNode(node.id);
+      },
       key: node.id
     }));
   });

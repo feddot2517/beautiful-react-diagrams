@@ -16,7 +16,7 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
 
 var NodesCanvas = function NodesCanvas(props) {
-  var onSelectNode = props.onSelectNode,
+  var _onSelectNode = props.onSelectNode,
       nodes = props.nodes,
       onPortRegister = props.onPortRegister,
       onNodeRegister = props.onNodeRegister,
@@ -25,6 +25,11 @@ var NodesCanvas = function NodesCanvas(props) {
       onSegmentFail = props.onSegmentFail,
       onSegmentConnect = props.onSegmentConnect,
       onChange = props.onChange;
+
+  var _useState = React.useState(''),
+      _useState2 = _rollupPluginBabelHelpers.slicedToArray(_useState, 2),
+      selectedNode = _useState2[0],
+      setSelectedNode = _useState2[1];
 
   var onNodePositionChange = function onNodePositionChange(nodeId, newCoordinates) {
     if (onChange) {
@@ -46,7 +51,12 @@ var NodesCanvas = function NodesCanvas(props) {
       onSegmentFail: onSegmentFail,
       onSegmentConnect: onSegmentConnect,
       onMount: onNodeRegister,
-      onSelectNode: onSelectNode,
+      isSelected: selectedNode === node.id,
+      onSelectNode: function onSelectNode(e) {
+        _onSelectNode(e);
+
+        setSelectedNode(node.id);
+      },
       key: node.id
     }));
   });

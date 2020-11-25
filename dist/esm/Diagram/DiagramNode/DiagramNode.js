@@ -4,7 +4,7 @@ import { defineProperty as _defineProperty } from '../../_virtual/_rollupPluginB
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { PortType } from '../../shared/Types.js';
-import inRange from 'lodash.inrange';
+import 'lodash.inrange';
 import getDiagramNodeStyle from './getDiagramNodeStyle.js';
 import { usePortRegistration, useNodeRegistration } from '../../shared/internal_hooks/useContextRegistration.js';
 import useDrag from '../../shared/internal_hooks/useDrag.js';
@@ -29,7 +29,8 @@ var DiagramNode = function DiagramNode(props) {
       render = props.render,
       className = props.className,
       disableDrag = props.disableDrag,
-      onSelectNode = props.onSelectNode;
+      onSelectNode = props.onSelectNode,
+      isSelected = props.isSelected;
   var registerPort = usePortRegistration(inputs, outputs, onPortRegister);
 
   var _useDrag = useDrag({
@@ -50,15 +51,8 @@ var DiagramNode = function DiagramNode(props) {
       if (onPositionChange) {
         event.stopImmediatePropagation();
         event.stopPropagation();
-        var nextWidth = dragStartPoint.current[0] - info.offset[0];
-        var nextHeight = dragStartPoint.current[1] - info.offset[1];
-        var parentDim = [ref.current.parentElement.offsetWidth, ref.current.parentElement.offsetHeight];
-        var refDim = [ref.current.offsetWidth, ref.current.offsetHeight];
-
-        if (inRange(nextWidth, 0, parentDim[0] - refDim[0]) && inRange(nextHeight, 0, parentDim[1] - refDim[1])) {
-          var nextCoords = [nextWidth, nextHeight];
-          onPositionChange(id, nextCoords);
-        }
+        var nextCoords = [dragStartPoint.current[0] - info.offset[0], dragStartPoint.current[1] - info.offset[1]];
+        onPositionChange(id, nextCoords);
       }
     });
   }
@@ -88,8 +82,7 @@ var DiagramNode = function DiagramNode(props) {
   };
   return React.createElement("div", {
     className: classList,
-    ref: ref,
-    style: getDiagramNodeStyle(coordinates, disableDrag),
+    style: getDiagramNodeStyle(coordinates),
     onClick: function onClick(e) {
       return onSelectNode({
         id: id,
@@ -98,13 +91,20 @@ var DiagramNode = function DiagramNode(props) {
         event: e
       });
     }
-  }, render && typeof render === 'function' && render(customRenderProps), !render && React.createElement(React.Fragment, null, content, React.createElement("div", {
+  }, React.createElement("span", {
+    style: {
+      background: isSelected ? '#5b8492' : '#182b3e',
+      cursors: 'move',
+      userSelect: 'none'
+    },
+    ref: ref
+  }, "DRAG HERE"), React.createElement("div", null, render && typeof render === 'function' && render(customRenderProps), !render && React.createElement(React.Fragment, null, content, React.createElement("div", {
     className: "bi-port-wrapper"
   }, React.createElement("div", {
     className: "bi-input-ports"
   }, InputPorts), React.createElement("div", {
     className: "bi-output-ports"
-  }, OutputPorts))));
+  }, OutputPorts)))));
 };
 
 DiagramNode.propTypes = {
@@ -125,7 +125,8 @@ DiagramNode.propTypes = {
   onSegmentConnect: PropTypes.func,
   onSelectNode: PropTypes.func,
   className: PropTypes.string,
-  disableDrag: PropTypes.bool
+  disableDrag: PropTypes.bool,
+  isSelected: PropTypes.bool
 };
 DiagramNode.defaultProps = {
   type: 'default',
@@ -143,8 +144,8 @@ DiagramNode.defaultProps = {
   onSegmentFail: undefined,
   onSegmentConnect: undefined,
   className: '',
-  disableDrag: false
+  disableDrag: false,
+  isSelected: false
 };
-var DiagramNode$1 = React.memo(DiagramNode);
 
-export default DiagramNode$1;
+export default DiagramNode;

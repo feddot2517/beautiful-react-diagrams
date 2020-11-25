@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useRef} from 'react';
+import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import inRange from 'lodash.inrange';
@@ -17,7 +17,7 @@ import useNodeUnregistration from '../../shared/internal_hooks/useNodeUnregistra
 const DiagramNode = (props) => {
   const {
     id, content, coordinates, type, inputs, outputs, data, onPositionChange, onPortRegister, onNodeRemove,
-    onDragNewSegment, onMount, onSegmentFail, onSegmentConnect, render, className, disableDrag, onSelectNode
+    onDragNewSegment, onMount, onSegmentFail, onSegmentConnect, render, className, disableDrag, onSelectNode, isSelected
   } = props;
   const registerPort = usePortRegistration(inputs, outputs, onPortRegister); // get the port registration method
   const { ref, onDragStart, onDrag } = useDrag({ throttleBy: 14 }); // get the drag n drop methods
@@ -35,14 +35,8 @@ const DiagramNode = (props) => {
       if (onPositionChange) {
         event.stopImmediatePropagation();
         event.stopPropagation();
-        const nextWidth = dragStartPoint.current[0] - info.offset[0];
-        const nextHeight = dragStartPoint.current[1] - info.offset[1];
-        const parentDim = [ref.current.parentElement.offsetWidth, ref.current.parentElement.offsetHeight];
-        const refDim = [ref.current.offsetWidth, ref.current.offsetHeight];
-        if (inRange(nextWidth, 0, parentDim[0] - refDim[0]) && inRange(nextHeight, 0, parentDim[1] - refDim[1])) {
-          const nextCoords = [nextWidth, nextHeight];
-          onPositionChange(id, nextCoords);
-        }
+        const nextCoords = [dragStartPoint.current[0] - info.offset[0], dragStartPoint.current[1] - info.offset[1]];
+        onPositionChange(id, nextCoords);
       }
     });
   }
@@ -64,7 +58,9 @@ const DiagramNode = (props) => {
   const customRenderProps = { id, render, content, type, inputs: InputPorts, outputs: OutputPorts, data, className };
 
   return (
-    <div className={classList} ref={ref} style={getDiagramNodeStyle(coordinates, disableDrag)} onClick={(e)=>onSelectNode({id, content, coordinates, event: e})}>
+    <div className={classList} style={getDiagramNodeStyle(coordinates, disableDrag)} onClick={(e)=>onSelectNode({id, content, coordinates, event: e})}>
+      <span style={{background: isSelected?'#5b8492':'#182b3e', cursors: 'move', userSelect: 'none'}} ref={ref}>DRAG HERE</span>
+      <div>
       {render && typeof render === 'function' && render(customRenderProps)}
       {!render && (
         <>
@@ -79,6 +75,7 @@ const DiagramNode = (props) => {
           </div>
         </>
       )}
+      </div>
     </div>
   );
 };
@@ -150,6 +147,7 @@ DiagramNode.propTypes = {
   onSelectNode: PropTypes.func,
   className: PropTypes.string,
   disableDrag: PropTypes.bool,
+  isSelected: PropTypes.bool,
 };
 
 DiagramNode.defaultProps = {
@@ -169,6 +167,7 @@ DiagramNode.defaultProps = {
   onSegmentConnect: undefined,
   className: '',
   disableDrag: false,
+  isSelected: false,
 };
 
-export default React.memo(DiagramNode);
+export default DiagramNode;

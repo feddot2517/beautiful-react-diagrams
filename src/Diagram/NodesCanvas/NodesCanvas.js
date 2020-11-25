@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { NodeType } from '../../shared/Types';
 import DiagramNode from '../DiagramNode/DiagramNode';
@@ -11,6 +11,8 @@ const NodesCanvas = (props) => {
   const {
     onSelectNode, nodes, onPortRegister, onNodeRegister, onNodeRemove, onDragNewSegment, onSegmentFail, onSegmentConnect, onChange,
   } = props;
+
+  const [selectedNode, setSelectedNode] = useState('');
 
   // when a node item update its position updates it within the nodes array
   const onNodePositionChange = (nodeId, newCoordinates) => {
@@ -31,7 +33,8 @@ const NodesCanvas = (props) => {
       onSegmentFail={onSegmentFail}
       onSegmentConnect={onSegmentConnect}
       onMount={onNodeRegister}
-      onSelectNode={onSelectNode}
+      isSelected={selectedNode === node.id}
+      onSelectNode={(e)=>{onSelectNode(e); setSelectedNode(node.id)}}
       key={node.id}
     />
   ));

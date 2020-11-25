@@ -10,7 +10,6 @@ var DiagramCanvas = require('./DiagramCanvas/DiagramCanvas.js');
 var Types = require('../shared/Types.js');
 var NodesCanvas = require('./NodesCanvas/NodesCanvas.js');
 var LinksCanvas = require('./LinksCanvas/LinksCanvas.js');
-var useForceUpdate = require('../hooks/useForceUpdate.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -22,8 +21,6 @@ var Diagram = function Diagram(props) {
       onChange = props.onChange,
       onSelectNode = props.onSelectNode,
       rest = _rollupPluginBabelHelpers.objectWithoutProperties(props, ["schema", "onChange", "onSelectNode"]);
-
-  var forceUpdate = useForceUpdate.useForceUpdate();
 
   var _useState = React.useState(),
       _useState2 = _rollupPluginBabelHelpers.slicedToArray(_useState, 2),
@@ -38,7 +35,6 @@ var Diagram = function Diagram(props) {
 
   var onNodesChange = function onNodesChange(nextNodes) {
     if (onChange) {
-      forceUpdate();
       onChange({
         nodes: nextNodes
       });
