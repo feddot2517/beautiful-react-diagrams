@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, {useEffect, useMemo, useRef} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import inRange from 'lodash.inrange';
@@ -171,4 +171,4 @@ DiagramNode.defaultProps = {
   disableDrag: false,
 };
 
-export default DiagramNode;
+export default React.memo(DiagramNode);

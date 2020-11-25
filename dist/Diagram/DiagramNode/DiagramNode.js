@@ -156,5 +156,6 @@ DiagramNode.defaultProps = {
   className: '',
   disableDrag: false
 };
+var DiagramNode$1 = React__default['default'].memo(DiagramNode);
 
-exports.default = DiagramNode;
+exports.default = DiagramNode$1;

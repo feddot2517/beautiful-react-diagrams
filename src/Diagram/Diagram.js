@@ -6,6 +6,7 @@ import LinksCanvas from './LinksCanvas/LinksCanvas';
 import { SchemaType } from '../shared/Types';
 
 import './diagram.scss';
+import {useForceUpdate} from "../hooks/useForceUpdate";
 
 /**
  * The Diagram component is the root-node of any diagram.<br />
@@ -15,6 +16,7 @@ import './diagram.scss';
  */
 const Diagram = (props) => {
   const { schema, onChange, onSelectNode, ...rest } = props;
+  const forceUpdate = useForceUpdate();
   const [segment, setSegment] = useState();
   const { current: portRefs } = useRef({}); // keeps the port elements references
   const { current: nodeRefs } = useRef({}); // keeps the node elements references
@@ -22,6 +24,7 @@ const Diagram = (props) => {
   // when nodes change, performs the onChange callback with the new incoming data
   const onNodesChange = (nextNodes) => {
     if (onChange) {
+      forceUpdate();
       onChange({ nodes: nextNodes });
     }
   };
