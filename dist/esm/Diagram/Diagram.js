@@ -6,12 +6,15 @@ import DiagramCanvas from './DiagramCanvas/DiagramCanvas.js';
 import { SchemaType } from '../shared/Types.js';
 import NodesCanvas from './NodesCanvas/NodesCanvas.js';
 import LinksCanvas from './LinksCanvas/LinksCanvas.js';
+import { useForceUpdate } from '../hooks/useForceUpdate.js';
 
 var Diagram = function Diagram(props) {
   var schema = props.schema,
       onChange = props.onChange,
       onSelectNode = props.onSelectNode,
       rest = _objectWithoutProperties(props, ["schema", "onChange", "onSelectNode"]);
+
+  var forceUpdate = useForceUpdate();
 
   var _useState = useState(),
       _useState2 = _slicedToArray(_useState, 2),
@@ -26,6 +29,7 @@ var Diagram = function Diagram(props) {
 
   var onNodesChange = function onNodesChange(nextNodes) {
     if (onChange) {
+      forceUpdate();
       onChange({
         nodes: nextNodes
       });
