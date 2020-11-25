@@ -171,4 +171,4 @@ DiagramNode.defaultProps = {
   disableDrag: false,
 };
 
-export default React.memo(DiagramNode);
+export default DiagramNode;
