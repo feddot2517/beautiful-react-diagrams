@@ -93,7 +93,7 @@ var DiagramNode = function DiagramNode(props) {
   return React__default['default'].createElement("div", {
     className: classList,
     style: _rollupPluginBabelHelpers.objectSpread2(_rollupPluginBabelHelpers.objectSpread2({}, getDiagramNodeStyle['default'](coordinates)), {}, {
-      borderColor: isSelected ? '#e6eaa5' : 'rgba(255,255,255,0)'
+      border: "3px solid ".concat(isSelected ? '#8907f8' : 'rgba(255,255,255,0)')
     }),
     onClick: function onClick(e) {
       return onSelectNode({
