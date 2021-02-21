@@ -3,17 +3,17 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
 var _rollupPluginBabelHelpers = require('../../_virtual/_rollupPluginBabelHelpers.js');
-var PropTypes = require('prop-types');
+var React = require('react');
 var classNames = require('classnames');
+var PropTypes = require('prop-types');
 var getDiagramZoomButtonsPosition = require('./getDiagramZoomButtonsPosition.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
 var classNames__default = /*#__PURE__*/_interopDefaultLegacy(classNames);
+var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
 
 var DiagramZoomButtons = function DiagramZoomButtons(props) {
   var onZoomIn = props.onZoomIn,

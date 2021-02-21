@@ -3,9 +3,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
 var _rollupPluginBabelHelpers = require('../../_virtual/_rollupPluginBabelHelpers.js');
 var throttle = require('lodash.throttle');
+var React = require('react');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 

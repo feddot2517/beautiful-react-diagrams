@@ -1,6 +1,6 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import React, { useState } from 'react';
 import { slicedToArray as _slicedToArray, objectWithoutProperties as _objectWithoutProperties, extends as _extends } from '../../_virtual/_rollupPluginBabelHelpers.js';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { NodeType } from '../../shared/Types.js';
 import DiagramNode from '../DiagramNode/DiagramNode.js';

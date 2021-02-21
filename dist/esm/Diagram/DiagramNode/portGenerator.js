@@ -1,6 +1,6 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import React from 'react';
 import { extends as _extends } from '../../_virtual/_rollupPluginBabelHelpers.js';
+import React from 'react';
 import Port from '../Port/Port.js';
 
 var portGenerator = function portGenerator(_ref, type) {

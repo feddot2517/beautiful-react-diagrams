@@ -3,13 +3,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
 var _rollupPluginBabelHelpers = require('../../_virtual/_rollupPluginBabelHelpers.js');
+var React = require('react');
 var PropTypes = require('prop-types');
 var classNames = require('classnames');
 var Types = require('../../shared/Types.js');
-var useCanvas = require('../../shared/internal_hooks/useCanvas.js');
 var usePortRefs = require('../../shared/internal_hooks/usePortRefs.js');
+var useCanvas = require('../../shared/internal_hooks/useCanvas.js');
 var getEntityCoordinates = require('./getEntityCoordinates.js');
 var makeSvgPath = require('../../shared/functions/makeSvgPath.js');
 var getPathMidpoint = require('../../shared/functions/getPathMidpoint.js');

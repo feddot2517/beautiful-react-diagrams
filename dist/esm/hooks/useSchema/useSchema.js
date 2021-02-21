@@ -1,9 +1,9 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import { useReducer, useCallback } from 'react';
 import { slicedToArray as _slicedToArray } from '../../_virtual/_rollupPluginBabelHelpers.js';
-import { ON_CHANGE, ON_NODE_ADD, ON_NODE_REMOVE, ON_CONNECT } from './actionTypes.js';
+import { useReducer, useCallback } from 'react';
 import ensureNodeId from '../../shared/functions/ensureNodeId.js';
 import schemaReducer from './schemaReducer.js';
+import { ON_CHANGE, ON_NODE_ADD, ON_NODE_REMOVE, ON_CONNECT } from './actionTypes.js';
 
 var initialState = {
   nodes: [],

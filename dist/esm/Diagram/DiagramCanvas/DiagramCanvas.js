@@ -1,11 +1,11 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import DiagramContext from '../../Context/DiagramContext.js';
 import { objectWithoutProperties as _objectWithoutProperties, slicedToArray as _slicedToArray, objectSpread2 as _objectSpread2, extends as _extends } from '../../_virtual/_rollupPluginBabelHelpers.js';
-import PropTypes from 'prop-types';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useMouseEvents, useWindowScroll, useWindowResize } from 'beautiful-react-hooks';
 import isEqual from 'lodash.isequal';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import DiagramContext from '../../Context/DiagramContext.js';
 import getDiagramCanvasCoords from './utils/getDiagramCanvasCoords.js';
 import getCanvasDragLimits from './utils/getCanvasDragLimits.js';
 import DiagramZoomButtons from '../DiagramZoomButtons/DiagramZoomButtons.js';

@@ -3,8 +3,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
 var _rollupPluginBabelHelpers = require('../../_virtual/_rollupPluginBabelHelpers.js');
+var React = require('react');
 var Port = require('../Port/Port.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }

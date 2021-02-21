@@ -1,6 +1,6 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import React, { useEffect } from 'react';
 import { objectWithoutProperties as _objectWithoutProperties, extends as _extends } from '../../_virtual/_rollupPluginBabelHelpers.js';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useDrag from '../../shared/internal_hooks/useDrag.js';
 import useCanvas from '../../shared/internal_hooks/useCanvas.js';

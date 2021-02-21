@@ -3,16 +3,16 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
 var _rollupPluginBabelHelpers = require('../../_virtual/_rollupPluginBabelHelpers.js');
+var React = require('react');
 var PropTypes = require('prop-types');
 var classNames = require('classnames');
-var Types = require('../../shared/Types.js');
 require('lodash.inrange');
 var getDiagramNodeStyle = require('./getDiagramNodeStyle.js');
 var useContextRegistration = require('../../shared/internal_hooks/useContextRegistration.js');
-var useDrag = require('../../shared/internal_hooks/useDrag.js');
+var Types = require('../../shared/Types.js');
 var portGenerator = require('./portGenerator.js');
+var useDrag = require('../../shared/internal_hooks/useDrag.js');
 var useNodeUnregistration = require('../../shared/internal_hooks/useNodeUnregistration.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -93,7 +93,7 @@ var DiagramNode = function DiagramNode(props) {
   return React__default['default'].createElement("div", {
     className: classList,
     style: _rollupPluginBabelHelpers.objectSpread2(_rollupPluginBabelHelpers.objectSpread2({}, getDiagramNodeStyle['default'](coordinates)), {}, {
-      border: "3px solid ".concat(isSelected ? '#8907f8' : 'rgba(255,255,255,0)')
+      border: "3px solid ".concat(isSelected ? '#bbbbbb' : 'rgba(255,255,255,0)')
     }),
     onClick: function onClick(e) {
       return onSelectNode({
@@ -103,14 +103,14 @@ var DiagramNode = function DiagramNode(props) {
         event: e
       });
     }
-  }, React__default['default'].createElement("span", {
+  }, React__default['default'].createElement("div", null, React__default['default'].createElement("span", {
     style: {
       background: '#cde0e7',
       cursors: 'move',
       userSelect: 'none'
     },
     ref: ref
-  }, "DRAG HERE"), React__default['default'].createElement("div", null, render && typeof render === 'function' && render(customRenderProps), !render && React__default['default'].createElement(React__default['default'].Fragment, null, content, React__default['default'].createElement("div", {
+  }, "DRAG HERE"), render && typeof render === 'function' && render(customRenderProps), !render && React__default['default'].createElement(React__default['default'].Fragment, null, content, React__default['default'].createElement("div", {
     className: "bi-port-wrapper"
   }, React__default['default'].createElement("div", {
     className: "bi-input-ports"

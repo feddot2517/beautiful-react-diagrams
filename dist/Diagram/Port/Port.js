@@ -3,8 +3,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
 var _rollupPluginBabelHelpers = require('../../_virtual/_rollupPluginBabelHelpers.js');
+var React = require('react');
 var PropTypes = require('prop-types');
 var useDrag = require('../../shared/internal_hooks/useDrag.js');
 var useCanvas = require('../../shared/internal_hooks/useCanvas.js');

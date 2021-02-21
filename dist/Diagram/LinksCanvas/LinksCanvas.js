@@ -5,9 +5,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
 var PropTypes = require('prop-types');
-var Types = require('../../shared/Types.js');
 var Link = require('../Link/Link.js');
 var Segment = require('../Segment/Segment.js');
+var Types = require('../../shared/Types.js');
 var findInvolvedEntity = require('./findInvolvedEntity.js');
 var removeLinkFromArray = require('./removeLinkFromArray.js');
 

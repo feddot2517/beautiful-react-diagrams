@@ -3,13 +3,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
-var DiagramContext = require('../../Context/DiagramContext.js');
 var _rollupPluginBabelHelpers = require('../../_virtual/_rollupPluginBabelHelpers.js');
-var PropTypes = require('prop-types');
+var React = require('react');
 var beautifulReactHooks = require('beautiful-react-hooks');
 var isEqual = require('lodash.isequal');
+var PropTypes = require('prop-types');
 var classNames = require('classnames');
+var DiagramContext = require('../../Context/DiagramContext.js');
 var getDiagramCanvasCoords = require('./utils/getDiagramCanvasCoords.js');
 var getCanvasDragLimits = require('./utils/getCanvasDragLimits.js');
 var DiagramZoomButtons = require('../DiagramZoomButtons/DiagramZoomButtons.js');
@@ -17,8 +17,8 @@ var DiagramZoomButtons = require('../DiagramZoomButtons/DiagramZoomButtons.js');
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
 var isEqual__default = /*#__PURE__*/_interopDefaultLegacy(isEqual);
+var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
 var classNames__default = /*#__PURE__*/_interopDefaultLegacy(classNames);
 
 var DiagramCanvas = function DiagramCanvas(props) {

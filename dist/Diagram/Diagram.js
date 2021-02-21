@@ -3,13 +3,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
 var _rollupPluginBabelHelpers = require('../_virtual/_rollupPluginBabelHelpers.js');
+var React = require('react');
 var PropTypes = require('prop-types');
 var DiagramCanvas = require('./DiagramCanvas/DiagramCanvas.js');
-var Types = require('../shared/Types.js');
 var NodesCanvas = require('./NodesCanvas/NodesCanvas.js');
 var LinksCanvas = require('./LinksCanvas/LinksCanvas.js');
+var Types = require('../shared/Types.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 

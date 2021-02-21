@@ -1,14 +1,14 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import React, { useRef, useMemo } from 'react';
 import { defineProperty as _defineProperty, objectSpread2 as _objectSpread2 } from '../../_virtual/_rollupPluginBabelHelpers.js';
+import React, { useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { PortType } from '../../shared/Types.js';
 import 'lodash.inrange';
 import getDiagramNodeStyle from './getDiagramNodeStyle.js';
 import { usePortRegistration, useNodeRegistration } from '../../shared/internal_hooks/useContextRegistration.js';
-import useDrag from '../../shared/internal_hooks/useDrag.js';
+import { PortType } from '../../shared/Types.js';
 import portGenerator from './portGenerator.js';
+import useDrag from '../../shared/internal_hooks/useDrag.js';
 import useNodeUnregistration from '../../shared/internal_hooks/useNodeUnregistration.js';
 
 var DiagramNode = function DiagramNode(props) {
@@ -83,7 +83,7 @@ var DiagramNode = function DiagramNode(props) {
   return React.createElement("div", {
     className: classList,
     style: _objectSpread2(_objectSpread2({}, getDiagramNodeStyle(coordinates)), {}, {
-      borderColor: isSelected ? '#e6eaa5' : 'rgba(255,255,255,0)'
+      border: "3px solid ".concat(isSelected ? '#bbbbbb' : 'rgba(255,255,255,0)')
     }),
     onClick: function onClick(e) {
       return onSelectNode({
@@ -93,14 +93,14 @@ var DiagramNode = function DiagramNode(props) {
         event: e
       });
     }
-  }, React.createElement("span", {
+  }, React.createElement("div", null, React.createElement("span", {
     style: {
       background: '#cde0e7',
       cursors: 'move',
       userSelect: 'none'
     },
     ref: ref
-  }, "DRAG HERE"), React.createElement("div", null, render && typeof render === 'function' && render(customRenderProps), !render && React.createElement(React.Fragment, null, content, React.createElement("div", {
+  }, "DRAG HERE"), render && typeof render === 'function' && render(customRenderProps), !render && React.createElement(React.Fragment, null, content, React.createElement("div", {
     className: "bi-port-wrapper"
   }, React.createElement("div", {
     className: "bi-input-ports"

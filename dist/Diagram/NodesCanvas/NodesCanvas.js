@@ -3,8 +3,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
 var _rollupPluginBabelHelpers = require('../../_virtual/_rollupPluginBabelHelpers.js');
+var React = require('react');
 var PropTypes = require('prop-types');
 var Types = require('../../shared/Types.js');
 var DiagramNode = require('../DiagramNode/DiagramNode.js');

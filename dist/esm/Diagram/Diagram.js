@@ -1,11 +1,11 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import React, { useState, useRef, useCallback } from 'react';
 import { objectWithoutProperties as _objectWithoutProperties, slicedToArray as _slicedToArray, extends as _extends, toConsumableArray as _toConsumableArray } from '../_virtual/_rollupPluginBabelHelpers.js';
+import React, { useState, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import DiagramCanvas from './DiagramCanvas/DiagramCanvas.js';
-import { SchemaType } from '../shared/Types.js';
 import NodesCanvas from './NodesCanvas/NodesCanvas.js';
 import LinksCanvas from './LinksCanvas/LinksCanvas.js';
+import { SchemaType } from '../shared/Types.js';
 
 var Diagram = function Diagram(props) {
   var schema = props.schema,

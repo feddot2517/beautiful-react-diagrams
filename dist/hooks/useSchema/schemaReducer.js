@@ -3,9 +3,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var getNodePortsId = require('../../shared/functions/getNodePortsId.js');
 var findIndex = require('lodash.findindex');
 var actionTypes = require('./actionTypes.js');
+var getNodePortsId = require('../../shared/functions/getNodePortsId.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 

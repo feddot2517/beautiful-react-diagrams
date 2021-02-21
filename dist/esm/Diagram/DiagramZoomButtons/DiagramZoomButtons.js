@@ -1,8 +1,8 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import React, { useRef, useCallback } from 'react';
 import { objectWithoutProperties as _objectWithoutProperties, extends as _extends } from '../../_virtual/_rollupPluginBabelHelpers.js';
-import PropTypes from 'prop-types';
+import React, { useRef, useCallback } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import getDiagramZoomButtonsPosition from './getDiagramZoomButtonsPosition.js';
 
 var DiagramZoomButtons = function DiagramZoomButtons(props) {

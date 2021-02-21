@@ -1,9 +1,9 @@
 /* beautiful-react-diagrams version: 0.5.0 */
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { NodeType, LinkType, PortAlignment } from '../../shared/Types.js';
 import DiagramLink from '../Link/Link.js';
 import Segment from '../Segment/Segment.js';
+import { NodeType, LinkType, PortAlignment } from '../../shared/Types.js';
 import findInvolvedEntity from './findInvolvedEntity.js';
 import removeLinkFromArray from './removeLinkFromArray.js';
 

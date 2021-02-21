@@ -1,7 +1,7 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import getNodePortsId from '../../shared/functions/getNodePortsId.js';
 import findIndex from 'lodash.findindex';
 import { ON_CONNECT, ON_NODE_REMOVE, ON_NODE_ADD, ON_CHANGE } from './actionTypes.js';
+import getNodePortsId from '../../shared/functions/getNodePortsId.js';
 
 var schemaReducer = function schemaReducer(state, action) {
   switch (action.type) {

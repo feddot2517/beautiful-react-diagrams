@@ -3,11 +3,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var React = require('react');
 var _rollupPluginBabelHelpers = require('../../_virtual/_rollupPluginBabelHelpers.js');
-var actionTypes = require('./actionTypes.js');
+var React = require('react');
 var ensureNodeId = require('../../shared/functions/ensureNodeId.js');
 var schemaReducer = require('./schemaReducer.js');
+var actionTypes = require('./actionTypes.js');
 
 var initialState = {
   nodes: [],

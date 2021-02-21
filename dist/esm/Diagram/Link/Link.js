@@ -1,11 +1,11 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import React, { useRef, useState, useMemo, useEffect, useCallback } from 'react';
 import { slicedToArray as _slicedToArray } from '../../_virtual/_rollupPluginBabelHelpers.js';
+import React, { useRef, useState, useMemo, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { PortType, NodeType, LinkType } from '../../shared/Types.js';
-import useCanvas from '../../shared/internal_hooks/useCanvas.js';
 import usePortRefs from '../../shared/internal_hooks/usePortRefs.js';
+import useCanvas from '../../shared/internal_hooks/useCanvas.js';
 import getEntityCoordinates from './getEntityCoordinates.js';
 import makeSvgPath from '../../shared/functions/makeSvgPath.js';
 import getPathMidpoint from '../../shared/functions/getPathMidpoint.js';

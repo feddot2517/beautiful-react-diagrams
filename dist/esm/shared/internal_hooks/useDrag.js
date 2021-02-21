@@ -1,7 +1,7 @@
 /* beautiful-react-diagrams version: 0.5.0 */
-import { useRef, useCallback, useEffect } from 'react';
 import { objectSpread2 as _objectSpread2 } from '../../_virtual/_rollupPluginBabelHelpers.js';
 import throttle from 'lodash.throttle';
+import { useRef, useCallback, useEffect } from 'react';
 
 var defaultOptions = {
   ref: undefined,
