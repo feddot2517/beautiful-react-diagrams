@@ -60,7 +60,15 @@ const DiagramNode = (props) => {
   return (
     <div className={classList} style={{...getDiagramNodeStyle(coordinates, disableDrag), border: `3px solid ${isSelected?'#bbbbbb':'rgba(255,255,255,0)'}`}} onClick={(e)=>onSelectNode({id, content, coordinates, event: e})}>
       <div>
-        <span style={{background: '#cde0e7', cursors: 'move', userSelect: 'none'}} ref={ref}>DRAG HERE</span>
+      <div style={
+        {
+          height: 20,
+          textAlign: 'center',
+          minWidth: 100,
+          background: '#cde0e7',
+          cursors: 'move',
+          userSelect: 'none'
+        }} ref={ref}>DRAG</div>
       {render && typeof render === 'function' && render(customRenderProps)}
       {!render && (
         <>

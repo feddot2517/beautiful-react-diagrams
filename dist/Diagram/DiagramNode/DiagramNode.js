@@ -103,14 +103,17 @@ var DiagramNode = function DiagramNode(props) {
         event: e
       });
     }
-  }, React__default['default'].createElement("div", null, React__default['default'].createElement("span", {
+  }, React__default['default'].createElement("div", null, React__default['default'].createElement("div", {
     style: {
+      height: 20,
+      textAlign: 'center',
+      minWidth: 100,
       background: '#cde0e7',
       cursors: 'move',
       userSelect: 'none'
     },
     ref: ref
-  }, "DRAG HERE"), render && typeof render === 'function' && render(customRenderProps), !render && React__default['default'].createElement(React__default['default'].Fragment, null, content, React__default['default'].createElement("div", {
+  }, "DRAG"), render && typeof render === 'function' && render(customRenderProps), !render && React__default['default'].createElement(React__default['default'].Fragment, null, content, React__default['default'].createElement("div", {
     className: "bi-port-wrapper"
   }, React__default['default'].createElement("div", {
     className: "bi-input-ports"
