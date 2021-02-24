@@ -58,11 +58,11 @@ var Port = function Port(props) {
       onMount(id, ref.current);
     }
   }, [ref.current]);
-  return React__default['default'].createElement("div", _rollupPluginBabelHelpers['extends']({
+  return React__default['default'].createElement(React__default['default'].Fragment, null, React__default['default'].createElement("div", _rollupPluginBabelHelpers['extends']({
     className: "bi bi-diagram-port",
     "data-port-id": id,
     ref: ref
-  }, rest));
+  }, rest)), rest.label);
 };
 
 Port.propTypes = {

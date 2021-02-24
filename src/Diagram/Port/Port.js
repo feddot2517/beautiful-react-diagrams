@@ -45,7 +45,12 @@ const Port = (props) => {
     }
   }, [ref.current]);
 
-  return (<div className="bi bi-diagram-port" data-port-id={id} ref={ref} {...rest} />);
+  return (
+      <>
+      <div className="bi bi-diagram-port" data-port-id={id} ref={ref} {...rest} />
+        {rest.label}
+      </>
+      );
 };
 
 Port.propTypes = {
