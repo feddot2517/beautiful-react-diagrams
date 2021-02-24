@@ -49,11 +49,19 @@ var Port = function Port(props) {
       onMount(id, ref.current);
     }
   }, [ref.current]);
-  return React.createElement(React.Fragment, null, React.createElement("div", _extends({
+  return React.createElement("div", {
+    style: {
+      display: 'flex'
+    }
+  }, React.createElement("div", _extends({
     className: "bi bi-diagram-port",
     "data-port-id": id,
     ref: ref
-  }, rest)), rest.label);
+  }, rest)), React.createElement("div", {
+    style: {
+      margin: '4px 0'
+    }
+  }, rest.label));
 };
 
 Port.propTypes = {

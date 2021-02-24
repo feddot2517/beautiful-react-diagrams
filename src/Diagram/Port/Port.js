@@ -46,10 +46,10 @@ const Port = (props) => {
   }, [ref.current]);
 
   return (
-      <>
+      <div style={{display: 'flex'}}>
       <div className="bi bi-diagram-port" data-port-id={id} ref={ref} {...rest} />
-        {rest.label}
-      </>
+      <div style={{margin: '4px 0'}}>{rest.label}</div>
+      </div>
       );
 };
 
