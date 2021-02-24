@@ -46,9 +46,9 @@ const Port = (props) => {
   }, [ref.current]);
 
   return (
-      <div style={{display: 'flex'}}>
-      <div className="bi bi-diagram-port" data-port-id={id} ref={ref} {...rest} />
-      <div style={{margin: '4px 0'}}>{rest.label}</div>
+      <div className="bi bi-diagram-port-custom-wrap">
+        <div className="bi bi-diagram-port" data-port-id={id} ref={ref} {...rest} />
+        <div className="bi bi diagram-port-label">{rest.label}</div>
       </div>
       );
 };

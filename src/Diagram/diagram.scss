@@ -54,11 +54,22 @@
           }
         }
 
+        .bi-diagram-port-custom-wrap {
+          display: flex;
+        }
+
+        .diagram-port-label {
+          margin: 4px 0;
+        }
+
         /* stylelint-disable-next-line no-descending-specificity */
         .bi-output-ports .bi-diagram-port {
-          margin-left: auto;
+        }
+        .bi-output-ports .bi-diagram-port-custom-wrap {
+          flex-direction: row-reverse;
         }
       }
+
 
 
       // ----------------------------

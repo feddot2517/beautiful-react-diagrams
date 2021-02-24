@@ -59,17 +59,13 @@ var Port = function Port(props) {
     }
   }, [ref.current]);
   return React__default['default'].createElement("div", {
-    style: {
-      display: 'flex'
-    }
+    className: "bi bi-diagram-port-custom-wrap"
   }, React__default['default'].createElement("div", _rollupPluginBabelHelpers['extends']({
     className: "bi bi-diagram-port",
     "data-port-id": id,
     ref: ref
   }, rest)), React__default['default'].createElement("div", {
-    style: {
-      margin: '4px 0'
-    }
+    className: "bi bi diagram-port-label"
   }, rest.label));
 };
 

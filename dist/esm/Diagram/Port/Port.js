@@ -50,17 +50,13 @@ var Port = function Port(props) {
     }
   }, [ref.current]);
   return React.createElement("div", {
-    style: {
-      display: 'flex'
-    }
+    className: "bi bi-diagram-port-custom-wrap"
   }, React.createElement("div", _extends({
     className: "bi bi-diagram-port",
     "data-port-id": id,
     ref: ref
   }, rest)), React.createElement("div", {
-    style: {
-      margin: '4px 0'
-    }
+    className: "bi bi diagram-port-label"
   }, rest.label));
 };
 
